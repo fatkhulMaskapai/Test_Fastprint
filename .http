@@ -1,0 +1,24 @@
+POST https://recruitment.fastprint.co.id/tes/api_tes_programmer
+Content-Type: application/json
+
+{
+  "username": "tesprogrammer050225C17",
+  "password": "a3558c1abecf7f35023e2f7dbb188cd3"
+}
+###
+POST https://recruitment.fastprint.co.id/tes/api_tes_programmer?username=tesprogrammer050225C17&password=a3558c1abecf7f35023e2f7dbb188cd3
+
+###
+POST https://recruitment.fastprint.co.id/tes/api_tes_programmer?Username=tesprogrammer050225C17&Password=a3558c1abecf7f35023e2f7dbb188cd3
+
+###   "Password ": "bisacoding-05-02-25"
+###
+# Tentukan Username
+@username = tesprogrammer050225C17
+
+# Tentukan Password (hash MD5 dulu)
+@password = {{compute-md5 "bisacoding-05-02-25"}}
+
+# Kirim Request ke API
+POST https://recruitment.fastprint.co.id/tes/api_tes_programmer
+Authorization: Basic {{username}}:{{password}}
