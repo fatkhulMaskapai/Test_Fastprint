@@ -1,9 +1,5 @@
 <?php 
     class C_produk extends CI_Controller {
-        public function dashboard(){
-            echo "Dashboard";
-
-        }
         // public function index(){
         //     $this->load->model('M_produk');
         //     $data['produk'] = $this->M_produk->get_all_produk();
@@ -34,7 +30,7 @@
 
             if ($this->form_validation->run() == FALSE) {
                 // Tampilkan form tambah produk
-                $data['action']  = site_url('C_produk/tambah');
+                $data['action']  = base_url() . 'C_produk/tambah';
                 $data['judul']   = 'Tambah Produk';
                 $data['produk']  = null; // Tidak ada data produk saat menambah
                 $this->load->view('V_produk_form', $data);
@@ -46,7 +42,6 @@
                     'kategori_id' => $this->input->post('kategori_id'),
                     'status_id'   => $this->input->post('status_id')
                 );
-                $this->load->model('M_produk');
                 $this->M_produk->insert_produk($input);
                 redirect('C_produk');
             }
@@ -54,7 +49,6 @@
 
         // Form edit produk
         public function edit($id) {
-            $this->load->model('M_produk');
             $produk = $this->M_produk->get_produk_by_id($id);
             if(empty($produk)) {
                 show_404(); // Tampilkan error 404 jika data tidak ditemukan
@@ -71,7 +65,7 @@
 
             if ($this->form_validation->run() == FALSE) {
                 // Tampilkan form edit dengan data produk yang ada
-                $data['action']  = site_url('C_produk/edit/'.$id);
+                $data['action']  = base_url() .'C_produk/edit/'.$id;
                 $data['judul']   = 'Edit Produk';
                 $data['produk']  = $produk;
                 $this->load->view('V_produk_form', $data);
@@ -90,7 +84,6 @@
 
         // Proses hapus produk
         public function hapus($id) {
-            // $this->load->model('M_produk');
             $this->M_produk->delete_produk($id);
             redirect('C_produk');
         }

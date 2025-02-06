@@ -144,7 +144,7 @@
       </p>
       <p>
         <input type="submit" value="Simpan">
-        <a href="<?php echo site_url('C_produk'); ?>">Batal</a>
+        <a href="<?php echo base_url(); ?>">Batal</a>
       </p>
     </form>
   </div>

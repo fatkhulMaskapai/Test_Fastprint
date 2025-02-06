@@ -117,16 +117,16 @@
         
         <!-- Tombol untuk tambah produk baru -->
         <div style="text-align: center; margin-bottom: 20px;">
-            <a href="<?php echo site_url('C_produk/tambah'); ?>" class="button button-add">Tambah Produk</a>
+            <a href="<?php echo base_url(); ?>C_produk/tambah" class="button button-add">Tambah Produk</a>
         </div>
         
         <!-- Filter Tampilan Produk -->
         <div class="filter">
-            <a href="<?php echo site_url('C_produk/index/1'); ?>" 
+            <a href="<?php echo base_url(); ?>C_produk/index/1" 
                class="<?php echo (isset($status_filter) && $status_filter == 1) ? 'active' : ''; ?>">
                 Produk Tidak Bisa Dijual
             </a>
-            <a href="<?php echo site_url('C_produk/index/2'); ?>" 
+            <a href="<?php echo base_url(); ?>C_produk/index/2" 
                class="<?php echo (isset($status_filter) && $status_filter == 2) ? 'active' : ''; ?>">
                 Produk Bisa Dijual
             </a>
@@ -155,14 +155,17 @@
                                 <td class="left"><?php echo $p->nama_produk; ?></td>
                                 <td style="text-align: right;"><?php echo number_format($p->harga, 0, ',', '.'); ?></td>
                                 <td><?php echo $p->nama_kategori; ?></td>
-                                <td><?php echo $p->nama_status; ?></td>
+                              <td style="background-color: <?php echo ($p->status_id == '2') ? 'green' : 'magenta'; ?>">
+                                <?php echo $p->nama_status; ?>
+                            </td>
+
                                 <td>
                                     <div class="button-group">
                                         <!-- Tombol Edit -->
-                                        <a href="<?php echo site_url('C_produk/edit/'.$p->id_produk); ?>" class="button button-edit">Edit</a>
+                                        <a href="<?php echo base_url().'C_produk/edit/'.$p->id_produk; ?>" class="button button-edit">Edit</a>
                                         <!-- Tombol Hapus dengan konfirmasi -->
                                         <a href="javascript:void(0);" 
-                                           onclick="confirmDelete('<?php echo site_url('C_produk/hapus/'.$p->id_produk); ?>', '<?php echo $p->nama_produk; ?>')" 
+                                           onclick="confirmDelete('<?php echo base_url() . 'C_produk/hapus/'.$p->id_produk; ?>', '<?php echo $p->nama_produk; ?>')" 
                                            class="button button-delete">Hapus</a>
                                     </div>
                                 </td>

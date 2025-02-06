@@ -1,6 +1,6 @@
 <?php 
     class M_produk extends CI_Model {
-
+        //tanpa filter
         // public function get_all_produk() {
         //     // Memilih semua field dari tabel produk dan juga nama kategori serta nama status
         //     $this->db->select('produk.*, kategori.nama_kategori, status.nama_status');
@@ -12,6 +12,7 @@
         //     return $this->db->get()->result();
         // }
 
+        //get produk dengan filter, i think lebih ok
         public function get_all_produk($status_filter = null) {
             $this->db->select('produk.*, kategori.nama_kategori, status.nama_status');
             $this->db->from('produk');
